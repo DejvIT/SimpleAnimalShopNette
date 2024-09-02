@@ -1,0 +1,33 @@
+{block content}
+	<div class="container">
+		<h1 class="my-4">List of Animals</h1>
+
+		<!-- Status Links -->
+		<div class="mb-3">
+			<a href="{$baseUrl}/home?status=Available" class="btn btn-primary">Available</a>
+			<a href="{$baseUrl}/home?status=Pending" class="btn btn-secondary">Adopted</a>
+			<a href="{$baseUrl}/home?status=Sold" class="btn btn-success">Sold</a>
+			<a href="{$baseUrl}/home" class="btn btn-info">All</a>
+		</div>
+
+		<!-- Animal List -->
+		<ul class="list-group">
+			{foreach $animals as $animal}
+				<li class="list-group-item d-flex justify-content-between align-items-center">
+					<div>
+						<strong>{$animal['name']}</strong> - {$animal['category']}
+						<img src="{$baseUrl}/{$animal['image']}" alt="{$animal['name']}" class="img-thumbnail" style="width: 100px;">
+						<div>Status: {$animal['status']}</div>
+					</div>
+					<div>
+						<a href="{$baseUrl}/animal/edit/{$animal['id']}" class="btn btn-warning btn-sm">Edit</a>
+						<a href="{$baseUrl}/animal/delete/{$animal['id']}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+					</div>
+				</li>
+			{/foreach}
+		</ul>
+
+		<!-- Add New Animal Link -->
+		<a href="{$baseUrl}/animal/add" class="btn btn-success mt-3">Add New Animal</a>
+	</div>
+{/block}

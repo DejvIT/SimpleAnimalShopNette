@@ -1,0 +1,9 @@
+services:
+    - App\Core\RouterFactory::createRouter
+    - App\Model\AnimalManager(%appDir%/data/animals.xml)
+
+search:
+	-	in: %appDir%
+		classes:
+			- *Factory
+			- *Facade
